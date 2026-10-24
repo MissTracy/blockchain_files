@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "seed-data",
+			"path": "../seed-data"
+		},
+		{
+			"name": "registry",
+			"path": "."
+		}
+	],
+	"settings": {}
+}

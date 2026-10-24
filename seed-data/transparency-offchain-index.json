@@ -1,0 +1,26 @@
+[
+  {
+    "document": "doc-a.txt",
+    "documentHash": "58482d811d64ffd0b210103681efcd9bc74efd32b0e4a40e142bc72cf695e8d6",
+    "indexed_registrant": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "indexed_block": 492
+  },
+  {
+    "document": "doc-b.txt",
+    "documentHash": "19b4b9621767a26518800590f331e573493decb212f729bd18a5e484015f1a05",
+    "indexed_registrant": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+    "indexed_block": 493
+  },
+  {
+    "document": "doc-c.txt",
+    "documentHash": "58de89e7d96e6d36bd6b333441a60b31e6f6724799e43037e7a913fd1afe5cb3",
+    "indexed_registrant": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+    "indexed_block": 494
+  },
+  {
+    "document": "doc-d.txt",
+    "documentHash": "2f6f059725b6e62bee12594e8907dc452c61fd12865db9f0c77f3600046904ed",
+    "indexed_registrant": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "indexed_block": 495
+  }
+]

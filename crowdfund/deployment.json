@@ -1,0 +1,9 @@
+{
+    "network": "Anvil (local)",
+    "chainId": 31337,
+    "rpcUrl": "http://127.0.0.1:8545",
+    "contract": "Campaign",
+    "address": "PASTE THE ADDRESS HERE",
+    "deployBlock": 0,
+    "abi": []
+  }
