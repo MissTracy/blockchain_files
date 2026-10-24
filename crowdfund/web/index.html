@@ -5,7 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Crowdfund Campaign</title>
   <link rel="stylesheet" href="style.css">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; 
+  script-src 'self'; style-src 'self'; img-src data:; connect-src 'self' 
+  http://127.0.0.1:8545; base-uri 'none'; form-action 'none'">
 </head>
 <body>
+    <main>
+        <h1>Crowdfund Campaign</h1>
+        <p id="banner" role="status"></p>
+    
+        <section aria-labelledby="h-contract">
+          <h2 id="h-contract">Contract</h2>
+          <dl>
+            <dt>Address</dt><dd id="v-address">-</dd>
+            <dt>Chain ID</dt><dd id="v-chain">-</dd>
+            <dt>Creator</dt><dd id="v-creator">-</dd>
+            <dt>Goal</dt><dd id="v-goal">-</dd>
+            <dt>Total raised</dt><dd id="v-raised">-</dd>
+            <dt>Deadline</dt><dd id="v-deadline">-</dd>
+            <dt>Status</dt><dd id="v-status">-</dd>
+          </dl>
+        </section>
+
+        <section aria-labelledby="h-wallet">
+
+            <h2 id="h-wallet">Wallet</h2>
+            <div id="wallets"></div>
+            <dl>
+            <dt>Wallet</dt><dd id="w-name">not connected</dd>
+            <dt>Account</dt><dd id="w-account">-</dd>
+            <dt>Wallet chain ID</dt><dd id="w-chain">-</dd>
+            <dt>Contributed by this account</dt><dd id="w-contrib">-</dd>
+            </dl>
+            <button id="switch-chain" type="button" hidden>Switch wallet to the campaign chain</button>
+        </section>
+
+        <section aria-labelledby="h-actions">
+            <h2 id="h-actions">Actions</h2>
+            <form id="contribute-form">
+            <label for="amount">Amount (ETH)</label>
+            <input id="amount" inputmode="decimal" autocomplete="off" value="0.5">
+            <button id="btn-contribute" type="submit" disabled>Contribute</button>
+            </form>
+            <button id="btn-withdraw" type="button" disabled>Withdraw (creator, goal met)</button>
+            <button id="btn-refund" type="button" disabled>Refund (backer, goal missed)</button>
+            <p id="tx" role="status"></p>
+        </section>
+
+        <section aria-labelledby="h-events">
+            <h2 id="h-events">Events</h2>
+            <ul id="events"></ul>
+        </section>
+      </main>
+      <script type="module" src="app.js"></script>
 </body>
 </html>

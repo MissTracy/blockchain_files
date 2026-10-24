@@ -54,6 +54,34 @@ import {
     if (!ok) throw new Error('deployment.json needs chainId, rpcUrl, address, deployBlock and abi.');
     return c;
   }
+  // Wallet discovery (EIP-6963): wallets announce themselves; the page never assumes one.
+const announcedWallets = new Map();
+function addWalletButton(detail) {
+  if (announcedWallets.has(detail.info.uuid)) return;
+  announcedWallets.set(detail.info.uuid, detail);
+  const button = document.createElement('button');
+  button.type = 'button';
+  if (/^data:image\//.test(detail.info.icon)) {
+    const image = document.createElement('img');
+    image.src = detail.info.icon;
+    image.alt = '';
+    button.append(image);
+  }
+  button.append(document.createTextNode(`Connect ${detail.info.name}`));
+  button.addEventListener('click', () => connect({ name: detail.info.name, provider: detail.provider }));
+  byId('wallets').append(button);
+}
+window.addEventListener('eip6963:announceProvider', (event) => addWalletButton(event.detail));
+window.dispatchEvent(new Event('eip6963:requestProvider'));
+// Older wallets only set window.ethereum, so offer it if nothing announces itself.
+setTimeout(() => {
+  if (announcedWallets.size === 0 && window.ethereum) {
+    addWalletButton({
+      info: { uuid: 'window.ethereum', name: 'browser wallet', icon: '', rdns: '' },
+      provider: window.ethereum,
+    });
+  }
+}, 500);
   
   // Read the contract through the page's own RPC connection; no wallet is needed for this.
   async function refresh() {
@@ -79,6 +107,7 @@ import {
     } else {
       $('w-contrib').textContent = '-';
     }
+
   }
   
   const short = (a) => `${a.slice(0, 6)}...${a.slice(-4)}`;
